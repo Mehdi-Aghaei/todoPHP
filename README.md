@@ -1,4 +1,4 @@
-# ToDoIt - To Do List App
+# To Do List App
 ToDoIt is a simple to do list app made with PHP, MySQL.
 
 ## Installation: 
