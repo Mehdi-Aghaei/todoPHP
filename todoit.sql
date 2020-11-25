@@ -1,30 +1,7 @@
--- phpMyAdmin SQL Dump
--- version 4.4.15.9
--- https://www.phpmyadmin.net
---
--- Host: localhost
--- Generation Time: Jul 24, 2017 at 02:01 PM
--- Server version: 5.6.35
--- PHP Version: 5.6.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Database: `todoit`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tasks`
---
 
 CREATE TABLE IF NOT EXISTS `tasks` (
   `id` int(11) NOT NULL,
@@ -40,7 +17,7 @@ CREATE TABLE IF NOT EXISTS `tasks` (
 --
 
 INSERT INTO `tasks` (`id`, `user_id`, `title`, `description`, `datetime`, `state`) VALUES
-(1, 22, 'Task 1', 'This is demo task!', '2017-01-01 01:01:00', 1),
+(1, 22, 'Task 1', 'This is demo task!', '2021-01-01 01:01:00', 1),
 (2, 22, 'Task 2', 'This is second demo task!', '2021-02-05 17:01:00', 0);
 
 -- --------------------------------------------------------
@@ -104,7 +81,3 @@ ALTER TABLE `users`
 --
 ALTER TABLE `tasks`
   ADD CONSTRAINT `tasks_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
