@@ -1,4 +1,3 @@
-
 $(document).ready(function () {
     /* Main */
     $("#add-task").hide();
