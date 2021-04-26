@@ -1,3 +1,9 @@
+<!-- PHP Programming Project.
+-- Our Group Members are:
+-- Aghaei Mehdi (Neptun code: L2MRA1)
+-- Beltran Castro Carlos Ricardo (Neptun code: VY6V8S)
+-- Purevsuren Davaadorj (Neptun code: CYLJ5C) -->
+
 <?php
 $dsn = "mysql://hostname=localhost;dbname=test"; // Data Source Name
 $user = "root";
