@@ -145,5 +145,3 @@ if ('' === session_id()) {
 } else {
     return false;
 }
-?>
-

@@ -1,7 +1,7 @@
 <?php
-$dsn = "mysql://hostname=localhost;dbname=todoit"; // Data Source Name
+$dsn = "mysql://hostname=localhost;dbname=test"; // Data Source Name
 $user = "root";
-$pass = "mysql";
+$pass = "";
 $options = array(
     PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES UTF8'
 );
@@ -12,14 +12,17 @@ try {
     echo $e->getMessage();
 }
 
-class AbstractModel {
-    protected function prepareValues(PDOStatement &$stmt) {
+class AbstractModel
+{
+    protected function prepareValues(PDOStatement &$stmt)
+    {
         foreach (static::$tableSchema as $col => $type) {
             $stmt->bindParam(":{$col}", $this->$col, $type);
         }
     }
 
-    protected function buildSQLParameters() {
+    protected function buildSQLParameters()
+    {
         $namedParams = '';
         foreach (static::$tableSchema as $col => $type) {
             $namedParams .= $col . ' = :' . $col . ', ';
@@ -27,7 +30,8 @@ class AbstractModel {
         return trim($namedParams, ', ');
     }
 
-    public function create() {
+    public function create()
+    {
         global $conn;
         $sql = 'INSERT INTO ' . static::$tableName . ' SET ' . self::buildSQLParameters();
         $stmt = $conn->prepare($sql);
@@ -35,7 +39,8 @@ class AbstractModel {
         return $stmt->execute();
     }
 
-    public function update() {
+    public function update()
+    {
         global $conn;
         $sql = 'UPDATE ' . static::$tableName . ' SET ' . self::buildSQLParameters() . ' WHERE ' . static::$primaryKey . ' = ' . $this->{static::$primaryKey};
         $stmt = $conn->prepare($sql);
@@ -43,21 +48,24 @@ class AbstractModel {
         return $stmt->execute();
     }
 
-    public function delete() {
+    public function delete()
+    {
         global $conn;
         $sql = 'DELETE FROM ' . static::$tableName . ' WHERE ' . static::$primaryKey . ' = ' . $this->{static::$primaryKey};
         $stmt = $conn->prepare($sql);
         return $stmt->execute();
     }
 
-    public function getAll() {
+    public function getAll()
+    {
         global $conn;
         $sql = 'SELECT * FROM ' . static::$tableName;
         $stmt = $conn->prepare($sql);
         return $stmt->execute() === true ? $stmt->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, get_called_class(), array_keys(static::$tableSchema)) : false;
     }
 
-    public function getByID($id) {
+    public function getByID($id)
+    {
         global $conn;
         $sql = 'SELECT * FROM ' . static::$tableName . ' WHERE ' . static::$primaryKey . ' = ' . $id;
         $stmt = $conn->prepare($sql);
