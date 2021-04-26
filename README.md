@@ -11,8 +11,9 @@ ToDoIt is a simple to do list app made with PHP, MySQL.
 
 - Import sql (todoit.sql) to your database.
 - Change database info in (app/models/db.php)
+- php 7.0.0 requirements and sessions directory in model
 
-```php 7.0.0 requirements and sessions directory in model
+```php
 // Change yourdbname with Database name.
 $dsn = "mysql://hostname=localhost;dbname=yourdbname";
 $user = "root"; // Database Username
